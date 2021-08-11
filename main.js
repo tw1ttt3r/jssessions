@@ -12,9 +12,9 @@ var nombre = 'Pedro';
 
 // Crear variable en ES6
 // Permite modificar su valor 
-let nombre = 'Pedro';
+let nombre1 = 'Pedro';
 // Mantiene el valor con la que fue inicializada
-const nombre = 'Pedro';
+const nombre2 = 'Pedro';
 
 
 // Datos primitivos
@@ -96,3 +96,5 @@ console.log('despues de ++n', n)
 // 4++  // 4
 // ++4  // 5
 
+
+let nuevaVariable = true;
