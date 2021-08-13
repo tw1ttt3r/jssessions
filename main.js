@@ -1,100 +1,214 @@
-// enviar mensajes en consola del navegador
-console.log('Hola Mundo');
+// estructuras de control condicionales
+// permite operar mediante condiciones que arrojen valores booleanos
 
-// enviar mensajes al usuario desde el navegador con ventana emergente
-alert('hola mundo desde el navegador');
+// if 
 
+// condiciones => expresiones 
 
+// validar que la variable tiene un valor string
 
+const valor = 9;
 
-// Crear variable en ES5
-var nombre = 'Pedro';
+if (typeof valor === 'string') {
+    console.log('La variable cumple la condición');
+} else if (typeof valor === 'number') {
+    console.log('La variable no cumple la primera condición porque es número');
+} else {
+    console.log('La variable no cumple ninguna condición');
+}
 
-// Crear variable en ES6
-// Permite modificar su valor 
-let nombre1 = 'Pedro';
-// Mantiene el valor con la que fue inicializada
-const nombre2 = 'Pedro';
+// Ejercicio 1
+// Determinar si un persona puede votar 
+// 1. Que su edad sea mayor o igual de 18
+// 2. Si tiene 30, felicitarlo y decirle que puede votar
+// 3. Si tiene mas de 30, decirle que no puede votar
 
+const edad = 61;
 
-// Datos primitivos
+if (edad >= 18 && edad < 30) {
+    console.log('Puedes votar');
+} else if (edad === 30) {
+    console.log('Felicidades =D, puedes votar');
+} else {
+    console.log('No puedes votar');
+}
 
-// string  conjunto de caracteres
-'hola mundo'
-// number cualquier numero del 0 al 9 que no este entre comillas
-9
-9.08
-// boolen solo permite valores true y false (en minusculas)
-true
-false
+// Switch, estrucutra de control de casos
+// caso corresponde a una condicion else if
 
-// array
-// []
-// object
-// {}
-// function
-// function() {}
+switch(typeof valor) {
+    case 'string':
+        console.log('Tu variable tiene un valor string');
+        break;
+    case 'number':
+        console.log('Tu variable tiene un valor number');
+        break;
+    case 'boolean':
+        console.log('Tu variable tiene un valor boolean');
+        break;
+    default:
+        console.log('La variable no cumple ninguna condición');
+        break;
+}
 
-// undefined valor que denota inexitencia
+// Ejercicio 2
 
-// null valor que denota que existe pero que esta vacio
+// Dado la sieguiente lista 
 
+// 1. LUNES
+// 2. MARTES
+// 3. MIERCOLES
+// 4. JUEVES
+// 5. VIERNES
+// 6. SABADO
+// 7. DOMINGO
 
-// Coercion convertir un tipo de dato a otro
+// mencionarme el nombre del día dependiendo del numero que dé
 
-// explicita  hace uso de metodos o funciones
-let numero = 123;
-console.log(numero);
-numero = String(numero);
-// console.log(conversion)
-console.log(numero)
+const dia = 19;
 
-// implicita operaciones como concatenicacion o generar valores tryly o falsy
-
-let nuevoConversion = numero + '';
-
-console.log(nuevoConversion);
-
-Number('1234')
-
-Boolean()
-
-
-// Operadores
-
-// // suma
-// 3 + 3  // 6
-
-// // concatenacion
-
-// '12' + 12  // '1212'
-
-// // resta
-
-// 4 - 6 // -2
-
-// // multiplicacion
-
-// 4 * 4  // 16
-
-// // division
-
-// 4 / 2
-
-// // modulo
-
-// 5 % 3
-
-// incremento
-
-let n = 4;
-
-console.log(n++) // obtenemos el valor previo al incremento (pero si se hace el incremento)
-console.log('despues de n++', n)
-console.log(++n) // se genera el incremento y obtenemos el valor
-console.log('despues de ++n', n)
-// 4++  // 4
-// ++4  // 5
+switch(dia) {
+    case 1:
+        console.log('Lunes');
+        break;
+    case 2:
+        console.log('Martes');
+        break;
+    case 3:
+        console.log('Miercoles');
+        break;
+    case 4:
+        console.log('Jueves');
+        break;
+    case 5:
+        console.log('Viernes');
+        break;
+    case 6:
+        console.log('Sabado');
+        break;
+    case 7:
+        console.log('Domingo');
+        break;
+    default:
+        console.log('Se me acabaron los días');
+        break;
+}
 
 
-let nuevaVariable = true;
+// ternario, es una forma abreviada de un if / else
+
+// if (condicion) {} else {}
+
+// condicion ? resultado si es verdadera : resultado si es falsa;
+
+const nombre = 'Juan';
+const profesion = 'Contador';
+
+// nombre === 'Juan' ? 'Hola Juan como estas?' : 'Como te llamas';
+const resultado = nombre === 'Juan'
+    ? profesion === 'Contador'
+        ? 'Me ayudas con mi declaración'
+        : 'No conoces algún contador?'
+    : nombre === 'Miguel'
+        ? 'Tiempo sin verte'
+        : 'Como te llamas';
+console.log('el ternario me entrego: ', resultado);
+
+let resultado2= '';
+if (nombre === 'Juan') {
+    if (profesion === 'Contador') {
+        resultado2 = 'Me ayudas con mi declaración';
+    } else {
+        resultado2 = 'No conoces algún contador?';
+    }
+} else {
+    if (nombre === 'Miguel') {
+        resultado2 = 'Tiempo sin verte';
+    } else {
+        resultado2 = 'Como te llamas';
+    }
+    resultado2 = 'Como te llamas';
+}
+
+console.log('el if/else me entrego: ', resultado);
+
+// Ejercicio 3
+
+// Refactorizar el primer ejercion con un ternario
+
+// prompt, es una funcion que abre una ventana,
+// con un mensaje (opcional) y con input el cual me regresa el valor
+// pero de tipo string
+
+let dato = prompt('Ingresa tu nombre');
+
+console.log(typeof dato);
+console.log(dato);
+
+// Ejercicio 4
+
+// Refactorizar ejercicio 2 con uso de prompt
+
+
+// estructuras de control iterables
+
+// for, determinado por tres condiciones: inicio, fin, incremento
+
+// for (let i = 0; i < 10; i++) {
+//     console.log('Pedro');
+// } 
+
+// ejemplo: imprimir el consecutivo de i
+for (let i = -6; i < 10; i++) {
+    if (i % 2 === 0) {
+        console.log(i);
+    }
+}
+
+// Ejercio 5
+
+// Imprimir el doble de los numeros pares dentro de la serie
+// el usuario debe ingresar un numero de inicio
+// y un numero de fin
+// si el numero es divisible entre 3
+// enviar un mensaje de 'numero divisible entre 3'
+
+const inicio = Number(prompt('Ingresa el numero inicial'));
+const fin = Number(prompt('Ingresa el numero final'));
+
+if (isNaN(inicio) || isNaN(fin)) {
+    console.log('No ingresaste un numero: ', inicio, fin);
+} else {
+    for (let i = inicio; i < fin; i++) {
+        if (i % 2 === 0) {
+            console.log(i);
+        } else if (i % 3 === 0) {
+            console.log('numero divisible entre 3');
+        }
+    }
+}
+
+
+
+// While, es una combinacion entre iterable y condicional
+// Mientras la condicion es verdadera, haré lo que dice mi bloque
+
+// while (condicion) {}
+
+let pregunta = true;
+
+while (pregunta) {
+    console.log('Esto es una iteración');
+    const respuesta = prompt('De nuevo: [s / n]');
+    pregunta = respuesta.toLowerCase() === 's' ? true : false;
+}
+
+
+// Ejercicio 6
+
+// Se le pedirá al usuario dos número
+// si la división de los números es mayor a 10
+// se imprimirá un mensaje con el resultado y se le preguntará la usuario
+// si desea hacer otro calculo
+// si la división de los números es menor a 10
+// se acabará el programa despidiendose del usuario
