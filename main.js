@@ -1,214 +1,125 @@
-// estructuras de control condicionales
-// permite operar mediante condiciones que arrojen valores booleanos
+// funciones
+// sintaxis
 
-// if 
+// IIFE
 
-// condiciones => expresiones 
+// funciones anonimas, se encapsulan entre parentesis
+// y se invocan por el uso de () al final de su definición
 
-// validar que la variable tiene un valor string
+// sintaxis 
 
-const valor = 9;
+// (function() {})()
+// (function(parametro1, parametro2) {})(parametro1, parametro2)
 
-if (typeof valor === 'string') {
-    console.log('La variable cumple la condición');
-} else if (typeof valor === 'number') {
-    console.log('La variable no cumple la primera condición porque es número');
-} else {
-    console.log('La variable no cumple ninguna condición');
+// (function() {
+//     alert('Este mensaje debe aparecer primero')
+// })();
+
+// function ejemplo_funcion() {}
+
+function salude() {
+    alert('Hola Mundo');
 }
 
-// Ejercicio 1
-// Determinar si un persona puede votar 
-// 1. Que su edad sea mayor o igual de 18
-// 2. Si tiene 30, felicitarlo y decirle que puede votar
-// 3. Si tiene mas de 30, decirle que no puede votar
+// salude();
 
-const edad = 61;
+// parametros: son valores ordenados que puede ocupar mi funcion
+// pueden ser de dos tipos: obligatorios u opcionales.
+// obligatorios: son los que se piden al llamar la funcion y van al principio de la lista
+// opcionales: son los que se piden al llamar la funcion y van al final de la lista 
+// (parametro1, parametro2, parametron)
 
-if (edad >= 18 && edad < 30) {
-    console.log('Puedes votar');
-} else if (edad === 30) {
-    console.log('Felicidades =D, puedes votar');
-} else {
-    console.log('No puedes votar');
-}
+// ejemplo funcion que salude al usuario con el nombre
 
-// Switch, estrucutra de control de casos
-// caso corresponde a una condicion else if
-
-switch(typeof valor) {
-    case 'string':
-        console.log('Tu variable tiene un valor string');
-        break;
-    case 'number':
-        console.log('Tu variable tiene un valor number');
-        break;
-    case 'boolean':
-        console.log('Tu variable tiene un valor boolean');
-        break;
-    default:
-        console.log('La variable no cumple ninguna condición');
-        break;
-}
-
-// Ejercicio 2
-
-// Dado la sieguiente lista 
-
-// 1. LUNES
-// 2. MARTES
-// 3. MIERCOLES
-// 4. JUEVES
-// 5. VIERNES
-// 6. SABADO
-// 7. DOMINGO
-
-// mencionarme el nombre del día dependiendo del numero que dé
-
-const dia = 19;
-
-switch(dia) {
-    case 1:
-        console.log('Lunes');
-        break;
-    case 2:
-        console.log('Martes');
-        break;
-    case 3:
-        console.log('Miercoles');
-        break;
-    case 4:
-        console.log('Jueves');
-        break;
-    case 5:
-        console.log('Viernes');
-        break;
-    case 6:
-        console.log('Sabado');
-        break;
-    case 7:
-        console.log('Domingo');
-        break;
-    default:
-        console.log('Se me acabaron los días');
-        break;
-}
-
-
-// ternario, es una forma abreviada de un if / else
-
-// if (condicion) {} else {}
-
-// condicion ? resultado si es verdadera : resultado si es falsa;
-
-const nombre = 'Juan';
-const profesion = 'Contador';
-
-// nombre === 'Juan' ? 'Hola Juan como estas?' : 'Como te llamas';
-const resultado = nombre === 'Juan'
-    ? profesion === 'Contador'
-        ? 'Me ayudas con mi declaración'
-        : 'No conoces algún contador?'
-    : nombre === 'Miguel'
-        ? 'Tiempo sin verte'
-        : 'Como te llamas';
-console.log('el ternario me entrego: ', resultado);
-
-let resultado2= '';
-if (nombre === 'Juan') {
-    if (profesion === 'Contador') {
-        resultado2 = 'Me ayudas con mi declaración';
+function saludo(nombre, juan=true) {
+    if (juan) {
+        alert('Hola ' + nombre + ' que gusto de verte');
     } else {
-        resultado2 = 'No conoces algún contador?';
+        alert('Hola ' + nombre);
     }
-} else {
-    if (nombre === 'Miguel') {
-        resultado2 = 'Tiempo sin verte';
+}
+
+// const nombre = prompt('Como te llamas');
+
+// saludo(nombre);
+
+// Ejercicio 1: preguntarle al usuario su edad
+// si tiene menos de 18 años: 'Lo siento no puedes votar'
+// si tiene 18 años: 'Felicidades es tu primera votacion'
+// si tiene de 19 a 30: 'Solo puedes votar por diputados'
+// si tiene de 31 en adelabte: 'Muchas gracias por participar'
+
+// funciones anonimas, no tienen un nombre definido
+// para poderse invocar por lo regular se almacenan en una variable
+// principal uso de una funcion anonima, es el ser un método de un objeto
+
+// sintaxis
+
+// function() {}
+
+const invocacion = function() {
+    alert('Desde funcion anonima');
+}
+
+// invocacion();
+
+// arrow function () => {}
+// arrow function sin parametros _ => {}
+
+
+
+// Ejercicio 2: vamos a hacer una calculadora básica
+
+// deben preguntarle al usuario que operación matemática quiere hacer
+// le deben pedir dos números
+// imprimir el resultado
+// preguntarle si quiere calcular otra vez
+// si elije que sí, deberán mostrar el mensaje principal
+// si elije no, despedirse y terminar el programa
+
+// operaciones disponibles
+// suma
+// resta
+// multiplicacion
+// division
+// opcional
+
+
+// return , es el operador que me permite devolver un valor
+// no es obligatorio que una funcion devuelva un valor
+// pero si lo necesita, return es la unica manera de hacerlo
+// return es lo ultimo que se ejecuta en la funcion
+// tambien de un bloque
+
+function calcule(num, num2) {
+    return num + num2;
+    console.log('despues de la funcion');
+}
+
+function calcule2(num, num2) {
+    if (num > num2) {
+        return num - num2;
     } else {
-        resultado2 = 'Como te llamas';
+        return num + num2;
     }
-    resultado2 = 'Como te llamas';
+    return num + num2;
+    console.log('despues de la funcion');
 }
 
-console.log('el if/else me entrego: ', resultado);
+const variable = calcule2(4,3);
+alert('el valor es '+ variable);
 
-// Ejercicio 3
+// Ejercicio 3: vamos a mejorar nuestra calculadora básica
 
-// Refactorizar el primer ejercion con un ternario
-
-// prompt, es una funcion que abre una ventana,
-// con un mensaje (opcional) y con input el cual me regresa el valor
-// pero de tipo string
-
-let dato = prompt('Ingresa tu nombre');
-
-console.log(typeof dato);
-console.log(dato);
-
-// Ejercicio 4
-
-// Refactorizar ejercicio 2 con uso de prompt
-
-
-// estructuras de control iterables
-
-// for, determinado por tres condiciones: inicio, fin, incremento
-
-// for (let i = 0; i < 10; i++) {
-//     console.log('Pedro');
-// } 
-
-// ejemplo: imprimir el consecutivo de i
-for (let i = -6; i < 10; i++) {
-    if (i % 2 === 0) {
-        console.log(i);
-    }
-}
-
-// Ejercio 5
-
-// Imprimir el doble de los numeros pares dentro de la serie
-// el usuario debe ingresar un numero de inicio
-// y un numero de fin
-// si el numero es divisible entre 3
-// enviar un mensaje de 'numero divisible entre 3'
-
-const inicio = Number(prompt('Ingresa el numero inicial'));
-const fin = Number(prompt('Ingresa el numero final'));
-
-if (isNaN(inicio) || isNaN(fin)) {
-    console.log('No ingresaste un numero: ', inicio, fin);
-} else {
-    for (let i = inicio; i < fin; i++) {
-        if (i % 2 === 0) {
-            console.log(i);
-        } else if (i % 3 === 0) {
-            console.log('numero divisible entre 3');
-        }
-    }
-}
-
-
-
-// While, es una combinacion entre iterable y condicional
-// Mientras la condicion es verdadera, haré lo que dice mi bloque
-
-// while (condicion) {}
-
-let pregunta = true;
-
-while (pregunta) {
-    console.log('Esto es una iteración');
-    const respuesta = prompt('De nuevo: [s / n]');
-    pregunta = respuesta.toLowerCase() === 's' ? true : false;
-}
-
-
-// Ejercicio 6
-
-// Se le pedirá al usuario dos número
-// si la división de los números es mayor a 10
-// se imprimirá un mensaje con el resultado y se le preguntará la usuario
-// si desea hacer otro calculo
-// si la división de los números es menor a 10
-// se acabará el programa despidiendose del usuario
+// las mismas intrucciones que el ejercio anterior
+// suma:
+// si alguno de los numero es multiplo de 3 se cancela la operacion
+// y regresas como resultado 0
+// resta:
+// si el numero1 es mayor que el numero 2 inviertes los valores
+// para sumarlos
+// multiplicacion:
+// si el numero 2 es par, sacas el doble del numero2
+// y continuas con la operacion
+// division:
+// regresaras tambien el residuo de la division
