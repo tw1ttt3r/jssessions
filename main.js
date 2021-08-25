@@ -1,125 +1,218 @@
-// funciones
-// sintaxis
+// Array: Conjunto de elementos ordenados
+// su ordenacion comienza en 0 y termina en n-1 (donde n es el total de elementos)
 
-// IIFE
+// declaracion de array
+// const arreglo = [];
 
-// funciones anonimas, se encapsulan entre parentesis
-// y se invocan por el uso de () al final de su definición
+// total de elementos
+// propiedad length
 
-// sintaxis 
+const elementos = [];
 
-// (function() {})()
-// (function(parametro1, parametro2) {})(parametro1, parametro2)
+console.log('total de elementos: ', elementos.length);
 
-// (function() {
-//     alert('Este mensaje debe aparecer primero')
-// })();
+// Obtener elementos de mi arreglo
+// apartir del indice de mi elemento
 
-// function ejemplo_funcion() {}
+            //    0          1        2         3(n-1)
+let nombres = ['Juán', 'Antonio', 'Miguel', 'Leonel'];
 
-function salude() {
-    alert('Hola Mundo');
+console.log(nombres[2]);
+
+// Editar valor del elemento
+
+console.log(nombres);
+
+nombres[2] = 'Pedro';
+
+console.log(nombres);
+
+// Agregar valores
+
+// método push
+
+nombres.push('Lorena')
+
+console.log(nombres);
+
+const nuevonombres = ['Francisco', 'Maria', 'Ernesto']
+
+nombres = nombres.concat(nuevonombres);
+
+console.log(nombres);
+
+// Ejercicio 1: Preguntarle al usuario sus calificaciones 
+// Proporcioname tu calificacion
+// Deseas agregar una nueva calificacion
+// Proporcionar el promedio de calificaciones
+
+// Si el promedio es menor a 7
+// Mensaje de nos vemos el siguiente semestre
+// Si el promedio es entre 7 y 8
+// Felicitarlo
+// Si el promedio es de 9 o 10
+// Le van a preguntar su nombre y lo van a felicitar con su nombre
+
+
+// Recorrer arreglo con for
+const calificaciones = [9,7,6,5,8,10];
+let promedio = 0;
+let j = 0;
+for (let i = 0; i < calificaciones.length; i++) {
+    promedio = promedio + calificaciones[i];
 }
 
-// salude();
+while(j < calificaciones.length) {
+    promedio = promedio + calificaciones[j];
+    j = j + 1;
+}
 
-// parametros: son valores ordenados que puede ocupar mi funcion
-// pueden ser de dos tipos: obligatorios u opcionales.
-// obligatorios: son los que se piden al llamar la funcion y van al principio de la lista
-// opcionales: son los que se piden al llamar la funcion y van al final de la lista 
-// (parametro1, parametro2, parametron)
+promedio = promedio / calificaciones.length;
 
-// ejemplo funcion que salude al usuario con el nombre
+// Eliminar elementos de mi arreglo
 
-function saludo(nombre, juan=true) {
-    if (juan) {
-        alert('Hola ' + nombre + ' que gusto de verte');
-    } else {
-        alert('Hola ' + nombre);
+// delete
+delete nombres[2];
+
+console.log(nombres);
+
+// splice
+
+nombres.splice(2,1);
+console.log(nombres);
+
+nombres.splice(3);
+console.log(nombres);
+
+// pop
+// elimina el ultimo elemento de mi arreglo y lo regresa
+
+console.log(nombres.pop())
+console.log(nombres)
+
+// Ejercicio 2:
+// Dado un arreglo de numeros aleatorios
+
+// determinar
+// cuantos son pares - generar un arreglo de ellos
+// cuantos impares - generar un arreglo de ellos
+// Eliminar los divisibles entre 3 del arreglo original - generar un arreglo con ellos
+// obtener los divisibles entre 10 en un nuevo arreglo
+// imprimir en consola los arreglos generados
+
+// para generar numero aleatorios
+// function numeroAleatorio(min, max) {
+//      return Math.round(Math.random() * (max - min) + min);
+// }
+
+// Objeto: Estructura de dato donde manejamos llaves (comunmente llamadas
+// propiedades) y valores (de cualquier tipo), podemos guardar funciones
+// (comunmente llamados metodos)
+
+// declaracion 
+// const persona = {};
+
+
+const persona = {
+    nombre: 'Pedro'
+};
+
+// asignacion/modificacion de propiedades
+persona['direccion'] = 'Ciudad de México, CDMX';
+
+// generar metodos
+
+persona['saluda'] = function() {
+    console.log('mi nombre es: ', this.nombre)
+};
+
+persona['dondevivo'] = function() {
+    console.log('yo vivo: ', this.direccion)
+};
+
+persona.saluda();
+persona.dondevivo();
+
+
+const automovil = {
+    marca: 'patito',
+    modelo: 'quak quak',
+    lanzamiento: 2015,
+    color: 'amarillo',
+    motor: 'alita2345',
+    arranca: function() {
+        console.log('el automovil arranco');
+    },
+    acelarar: function() {
+        console.log('el automovil aumento la velocidad');
+    },
+    apagar: function() {
+        console.log('el automovil se apago');
+    },
+    fichatecnica: function() {
+        console.log('marca: ', this.marca);
     }
-}
+};
+console.log(automovil);
 
-// const nombre = prompt('Como te llamas');
+automovil.arranca();
+automovil.acelarar();
+automovil.apagar();
 
-// saludo(nombre);
+// obtener valores
 
-// Ejercicio 1: preguntarle al usuario su edad
-// si tiene menos de 18 años: 'Lo siento no puedes votar'
-// si tiene 18 años: 'Felicidades es tu primera votacion'
-// si tiene de 19 a 30: 'Solo puedes votar por diputados'
-// si tiene de 31 en adelabte: 'Muchas gracias por participar'
+automovil.lanzamiento;
+automovil.color;
+automovil.marca;
 
-// funciones anonimas, no tienen un nombre definido
-// para poderse invocar por lo regular se almacenan en una variable
-// principal uso de una funcion anonima, es el ser un método de un objeto
+automovil['lanzamiento']
+automovil['color']
+automovil['marca']
 
-// sintaxis
-
-// function() {}
-
-const invocacion = function() {
-    alert('Desde funcion anonima');
-}
-
-// invocacion();
-
-// arrow function () => {}
-// arrow function sin parametros _ => {}
+// acceso dinamico de propiedades
+const propiedad = 'motor'
+automovil[propiedad];
 
 
+// eliminar
+delete automovil.motor;
+delete automovil['motor'];
+delete automovil[propiedad];
 
-// Ejercicio 2: vamos a hacer una calculadora básica
+console.log(automovil);
 
-// deben preguntarle al usuario que operación matemática quiere hacer
-// le deben pedir dos números
-// imprimir el resultado
-// preguntarle si quiere calcular otra vez
-// si elije que sí, deberán mostrar el mensaje principal
-// si elije no, despedirse y terminar el programa
+// obtener las propiedades de un objeto
+const llaves = Object.keys(automovil) //=>  arreglo con las llaves del objeto
 
-// operaciones disponibles
-// suma
-// resta
-// multiplicacion
-// division
-// opcional
+console.log('estas son las llaves: ', llaves);
 
+// obtener los valores de las llaves
+const valores = Object.values(automovil)
 
-// return , es el operador que me permite devolver un valor
-// no es obligatorio que una funcion devuelva un valor
-// pero si lo necesita, return es la unica manera de hacerlo
-// return es lo ultimo que se ejecuta en la funcion
-// tambien de un bloque
+console.log('estos son los valores: ', valores);
 
-function calcule(num, num2) {
-    return num + num2;
-    console.log('despues de la funcion');
-}
+// Reto
+// Agenda de contactos
+// Tiene cuatro funciones
+// Añadir contacto
+// Buscar Contacto
+// Editar contacto
+// Eliminar contacto
+// Ver todos los contactos
 
-function calcule2(num, num2) {
-    if (num > num2) {
-        return num - num2;
-    } else {
-        return num + num2;
-    }
-    return num + num2;
-    console.log('despues de la funcion');
-}
+// Datos minimos del contacto
+// -nombre
+// -telefono
+// -correo
+// apodo
 
-const variable = calcule2(4,3);
-alert('el valor es '+ variable);
+// La busqueda es por nombre o apodo y es exacta (el nombre completo o el apodo)
 
-// Ejercicio 3: vamos a mejorar nuestra calculadora básica
+// Puedo editar todos los campos
 
-// las mismas intrucciones que el ejercio anterior
-// suma:
-// si alguno de los numero es multiplo de 3 se cancela la operacion
-// y regresas como resultado 0
-// resta:
-// si el numero1 es mayor que el numero 2 inviertes los valores
-// para sumarlos
-// multiplicacion:
-// si el numero 2 es par, sacas el doble del numero2
-// y continuas con la operacion
-// division:
-// regresaras tambien el residuo de la division
+// Para eliminar, buscamos un contacto por nombre o apodo
+// y confirmamos eliminarlo, debemos responder con un mensaje de
+// que el contacto fue eliminado
+
+// Elegir ver todos los contactos (se enlistan todos los datos del contacto)
+
