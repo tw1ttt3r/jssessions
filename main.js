@@ -1,218 +1,178 @@
-// Array: Conjunto de elementos ordenados
-// su ordenacion comienza en 0 y termina en n-1 (donde n es el total de elementos)
+// POO (Programación Orientada a Objetos)
+// OOP (Oriented Objects Programming)
 
-// declaracion de array
-// const arreglo = [];
+// Es un paradigma de programación que usa clases y objetos 
+// para resolver problemas
 
-// total de elementos
-// propiedad length
+// abstracción: es el obtener las caracteristicas principales
 
-const elementos = [];
+// ejemplo:
+// Caracteristicas de un animal
+// numero de patas
+// tiene cola
+// genero
+// tamaño
+// clase (hervivoro, carnivoro, omnivoro)
+// peso
+// peligro de extención
 
-console.log('total de elementos: ', elementos.length);
+// acciones hace
+// comer
+// reproducirse
+// emitirsonido
+// moverse: un animal avanza moviendo una pata hacia adelante
+// necesidades
 
-// Obtener elementos de mi arreglo
-// apartir del indice de mi elemento
-
-            //    0          1        2         3(n-1)
-let nombres = ['Juán', 'Antonio', 'Miguel', 'Leonel'];
-
-console.log(nombres[2]);
-
-// Editar valor del elemento
-
-console.log(nombres);
-
-nombres[2] = 'Pedro';
-
-console.log(nombres);
-
-// Agregar valores
-
-// método push
-
-nombres.push('Lorena')
-
-console.log(nombres);
-
-const nuevonombres = ['Francisco', 'Maria', 'Ernesto']
-
-nombres = nombres.concat(nuevonombres);
-
-console.log(nombres);
-
-// Ejercicio 1: Preguntarle al usuario sus calificaciones 
-// Proporcioname tu calificacion
-// Deseas agregar una nueva calificacion
-// Proporcionar el promedio de calificaciones
-
-// Si el promedio es menor a 7
-// Mensaje de nos vemos el siguiente semestre
-// Si el promedio es entre 7 y 8
-// Felicitarlo
-// Si el promedio es de 9 o 10
-// Le van a preguntar su nombre y lo van a felicitar con su nombre
+// encapsulación
+// que la unica manera de poder ocupar propiedades
+// y metodos es apartir del objeto
+// solo puedo afectar a la clase desde la propia clase
 
 
-// Recorrer arreglo con for
-const calificaciones = [9,7,6,5,8,10];
-let promedio = 0;
-let j = 0;
-for (let i = 0; i < calificaciones.length; i++) {
-    promedio = promedio + calificaciones[i];
-}
+// herencia
+// que puedo heredar propiedades y metodos de una clase
+// es decir a partir de una clase puedo crear otra clase
 
-while(j < calificaciones.length) {
-    promedio = promedio + calificaciones[j];
-    j = j + 1;
-}
+// clase chita
+// heredar de clase animal y solo añidar las propiedades 
+// y metodos propios del chita
 
-promedio = promedio / calificaciones.length;
+// polimorfismo
+// que puedo hacer el mismo metodo pero de diferente manera
 
-// Eliminar elementos de mi arreglo
+// chita puede moverse
+// moverse: avanza saltando cada dos pasos
 
-// delete
-delete nombres[2];
+// funciones constructoras
+// crear una funcion, asignarla a una variable y pasar parametros si
+// fuera necesario
 
-console.log(nombres);
+// Declaracion de una funcion constructora
+const Animal = function(tamano, peso, patas=4, cola=true, genero='M',  clase='omnivoro', extincion=false){
+    // propiedades de la funcion constructora
+    this.noPatas = patas;
+    this.tieneCola = cola;
+    this.genero = genero;
+    this.tamano = tamano;
+    this.clase = clase;
+    this.peso = peso;
+    this.extincion = extincion;
 
-// splice
-
-nombres.splice(2,1);
-console.log(nombres);
-
-nombres.splice(3);
-console.log(nombres);
-
-// pop
-// elimina el ultimo elemento de mi arreglo y lo regresa
-
-console.log(nombres.pop())
-console.log(nombres)
-
-// Ejercicio 2:
-// Dado un arreglo de numeros aleatorios
-
-// determinar
-// cuantos son pares - generar un arreglo de ellos
-// cuantos impares - generar un arreglo de ellos
-// Eliminar los divisibles entre 3 del arreglo original - generar un arreglo con ellos
-// obtener los divisibles entre 10 en un nuevo arreglo
-// imprimir en consola los arreglos generados
-
-// para generar numero aleatorios
-// function numeroAleatorio(min, max) {
-//      return Math.round(Math.random() * (max - min) + min);
-// }
-
-// Objeto: Estructura de dato donde manejamos llaves (comunmente llamadas
-// propiedades) y valores (de cualquier tipo), podemos guardar funciones
-// (comunmente llamados metodos)
-
-// declaracion 
-// const persona = {};
-
-
-const persona = {
-    nombre: 'Pedro'
+    // metodos de la funcion constructora
+    this.comer = function() {
+        console.log('Esta comiendo');
+    };
+    this.reproducirse = function() {
+        console.log('Esta reproduciendose');
+    };
+    this.emitirSonido = function() {
+        console.log('Esta emitiendo un sonido');
+    };
+    this.moverse = function() {
+        console.log('Esta moviendose');
+    };
+    this.necesidades = function() {
+        console.log('Esta haciendo algo');
+    };
 };
 
-// asignacion/modificacion de propiedades
-persona['direccion'] = 'Ciudad de México, CDMX';
+const animal1 = new Animal();
 
-// generar metodos
+console.log(animal1);
+animal1.moverse();
+animal1.emitirSonido();
 
-persona['saluda'] = function() {
-    console.log('mi nombre es: ', this.nombre)
-};
-
-persona['dondevivo'] = function() {
-    console.log('yo vivo: ', this.direccion)
-};
-
-persona.saluda();
-persona.dondevivo();
+const animal2 = new Animal('1.70m', '85kg');
+console.log(animal2);
+animal1.moverse();
+animal1.emitirSonido();
 
 
-const automovil = {
-    marca: 'patito',
-    modelo: 'quak quak',
-    lanzamiento: 2015,
-    color: 'amarillo',
-    motor: 'alita2345',
-    arranca: function() {
-        console.log('el automovil arranco');
-    },
-    acelarar: function() {
-        console.log('el automovil aumento la velocidad');
-    },
-    apagar: function() {
-        console.log('el automovil se apago');
-    },
-    fichatecnica: function() {
-        console.log('marca: ', this.marca);
+// Ejercicio 1
+
+// Trabajas en una escuela, y vas a registrar a los alumnos.
+// Genera las funciones constructoras necesarias para poder
+// registrar a los alumnos
+
+
+// Herencia entre funciones constructoras
+// Javascript solo permite heredar de una clase o funcion constructora
+
+// el uso del prototype
+const Cheeta = function (peso, tamano, velocidad, manchas= true, patas, cola, genero,  clase, extincion) {
+    this.manchas = manchas;
+    this.velocidad = velocidad;
+
+    Animal.call(this, peso, tamano, patas, cola, genero,  clase, extincion);
+
+    this.moverse = function () {
+        console.log('Esta saltando cada dos pasos');
     }
 };
-console.log(automovil);
 
-automovil.arranca();
-automovil.acelarar();
-automovil.apagar();
+const cheeta1 = new Cheeta('78kg', '75cm', '200m/s', true, 4, true, 'H', 'carnivoro', false);
 
-// obtener valores
-
-automovil.lanzamiento;
-automovil.color;
-automovil.marca;
-
-automovil['lanzamiento']
-automovil['color']
-automovil['marca']
-
-// acceso dinamico de propiedades
-const propiedad = 'motor'
-automovil[propiedad];
+console.log(cheeta1);
 
 
-// eliminar
-delete automovil.motor;
-delete automovil['motor'];
-delete automovil[propiedad];
+// Ejercicio 2
 
-console.log(automovil);
+// Se ha solicitado una nueva funcionalidad
+// ahora necesitamos registrar profesores
+// refactorice su código para poder registrar profesores y alumnos
 
-// obtener las propiedades de un objeto
-const llaves = Object.keys(automovil) //=>  arreglo con las llaves del objeto
+// clases en Javascript ES6
+// no se ocupan funciones constructoras
+// ahora ocupamos la palabra reservada class y un metodo constructor
 
-console.log('estas son las llaves: ', llaves);
+// creacion de una clase
 
-// obtener los valores de las llaves
-const valores = Object.values(automovil)
+class Humano {
+    constructor(altura, peso){
+        // se ejecuta primero
+        // inicializar propiedades
+        this.altura= altura;
+        this.peso=peso;
+    }
 
-console.log('estos son los valores: ', valores);
+    // metodos de la clase
+    caminar() {}
+    hablar() {}
+    comer() {
+        this.peso = this.peso + 1;
+    }
+}
 
-// Reto
-// Agenda de contactos
-// Tiene cuatro funciones
-// Añadir contacto
-// Buscar Contacto
-// Editar contacto
-// Eliminar contacto
-// Ver todos los contactos
+const humano1 = new Humano('1.70m', '70kg');
+humano1.comer();
+humano1.hablar();
 
-// Datos minimos del contacto
-// -nombre
-// -telefono
-// -correo
-// apodo
+// Ejercicio 3: Refactorizar la clase alumno sin ocupar herencia
 
-// La busqueda es por nombre o apodo y es exacta (el nombre completo o el apodo)
 
-// Puedo editar todos los campos
+// Herencia con clases ES6
 
-// Para eliminar, buscamos un contacto por nombre o apodo
-// y confirmamos eliminarlo, debemos responder con un mensaje de
-// que el contacto fue eliminado
+class Persona extends Humano {
+    constructor(altura, peso, nombre, edad) {
+        super(altura, peso);
+        this.nombre = nombre;
+        this.edad = edad;
+    }
+}
 
-// Elegir ver todos los contactos (se enlistan todos los datos del contacto)
+class Profesor extends Persona {
+    constructor(altura, peso, nombre, edad) {
+        super(altura, peso, nombre, edad);
+    }
+}
 
+const profesor1 = new Profesor('1.72m', '80kg', 'Juan', '30');
+
+console.log(profesor1);
+
+// Ejercicio 4: Refactorizar la clase alumno con herencia
+
+// Postwork: 
+
+// Ejercicio de la agenda telefonica con clases
+// 
