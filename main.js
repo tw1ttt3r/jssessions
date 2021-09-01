@@ -1,178 +1,150 @@
-// POO (Programación Orientada a Objetos)
-// OOP (Oriented Objects Programming)
+// Efecto secundario: afectar variables fuera de mi scope
 
-// Es un paradigma de programación que usa clases y objetos 
-// para resolver problemas
+// ejemplo
 
-// abstracción: es el obtener las caracteristicas principales
+let nombre = '';
+let edad = 18;
+
+if (edad === 18) {
+    nombre = 'Pedro';
+}
+
+// No valido en la programacion funcional
+
+// function renombre(persona) {
+//     nombre = persona;
+// }
+
+// renombre('Juan');
+
+
+// valido en la programacion funcional
+
+// function renombre(persona) {
+//     return persona;
+// }
+
+// let nuevoNombre = renombre('Antonio');
+
+// inmutabilidad: no modificar el valor de una variable, si no generar
+// una nueva
+
+// ejemplo
+
+let nombres = ['Pedro', 'Juan', 'Maria'];
+let nombresR = [];
+
+for (let i = 0; i < nombres.length; i++) {
+    if (nombres[i].includes('r')) {
+        nombresR.push(nombres[i]);
+    }
+}
+
+
+// Ejercicio 1:  solicitar al usuario varios nombres
+// y despues solicitar una letra a buscar
+// regresar los nombres que contengan la letra
+
+// Funciones de primera clase: funciones que puedes almacenares en variables
 
 // ejemplo:
-// Caracteristicas de un animal
-// numero de patas
-// tiene cola
-// genero
-// tamaño
-// clase (hervivoro, carnivoro, omnivoro)
-// peso
-// peligro de extención
 
-// acciones hace
-// comer
-// reproducirse
-// emitirsonido
-// moverse: un animal avanza moviendo una pata hacia adelante
-// necesidades
-
-// encapsulación
-// que la unica manera de poder ocupar propiedades
-// y metodos es apartir del objeto
-// solo puedo afectar a la clase desde la propia clase
+// const operacion = (a,b) => a + b;
+// const operacion = (a,b) => {
+//     if (a === 3) {
+//         return 0;
+//     }
+//     return a + b;
+// };
 
 
-// herencia
-// que puedo heredar propiedades y metodos de una clase
-// es decir a partir de una clase puedo crear otra clase
-
-// clase chita
-// heredar de clase animal y solo añidar las propiedades 
-// y metodos propios del chita
-
-// polimorfismo
-// que puedo hacer el mismo metodo pero de diferente manera
-
-// chita puede moverse
-// moverse: avanza saltando cada dos pasos
-
-// funciones constructoras
-// crear una funcion, asignarla a una variable y pasar parametros si
-// fuera necesario
-
-// Declaracion de una funcion constructora
-const Animal = function(tamano, peso, patas=4, cola=true, genero='M',  clase='omnivoro', extincion=false){
-    // propiedades de la funcion constructora
-    this.noPatas = patas;
-    this.tieneCola = cola;
-    this.genero = genero;
-    this.tamano = tamano;
-    this.clase = clase;
-    this.peso = peso;
-    this.extincion = extincion;
-
-    // metodos de la funcion constructora
-    this.comer = function() {
-        console.log('Esta comiendo');
-    };
-    this.reproducirse = function() {
-        console.log('Esta reproduciendose');
-    };
-    this.emitirSonido = function() {
-        console.log('Esta emitiendo un sonido');
-    };
-    this.moverse = function() {
-        console.log('Esta moviendose');
-    };
-    this.necesidades = function() {
-        console.log('Esta haciendo algo');
-    };
-};
-
-const animal1 = new Animal();
-
-console.log(animal1);
-animal1.moverse();
-animal1.emitirSonido();
-
-const animal2 = new Animal('1.70m', '85kg');
-console.log(animal2);
-animal1.moverse();
-animal1.emitirSonido();
+// let resultado = operacion(2,3);
 
 
-// Ejercicio 1
+// funcion de alto orden: pueden recibir funciones como parametros
+// o regresar funciones como resultado
 
-// Trabajas en una escuela, y vas a registrar a los alumnos.
-// Genera las funciones constructoras necesarias para poder
-// registrar a los alumnos
+// ejemplo
 
+function saludo() {
+    return 'Me llamo '
+}
 
-// Herencia entre funciones constructoras
-// Javascript solo permite heredar de una clase o funcion constructora
+function comotellamas(nombre, primerasilaba) {
+    return primerasilaba() + nombre;
+}
 
-// el uso del prototype
-const Cheeta = function (peso, tamano, velocidad, manchas= true, patas, cola, genero,  clase, extincion) {
-    this.manchas = manchas;
-    this.velocidad = velocidad;
-
-    Animal.call(this, peso, tamano, patas, cola, genero,  clase, extincion);
-
-    this.moverse = function () {
-        console.log('Esta saltando cada dos pasos');
-    }
-};
-
-const cheeta1 = new Cheeta('78kg', '75cm', '200m/s', true, 4, true, 'H', 'carnivoro', false);
-
-console.log(cheeta1);
+comotellamas('Maria', saludo);
 
 
-// Ejercicio 2
+// ejemplo regresando una funcion
 
-// Se ha solicitado una nueva funcionalidad
-// ahora necesitamos registrar profesores
-// refactorice su código para poder registrar profesores y alumnos
+function suma1(a, b) {
+    return a + b;
+}
 
-// clases en Javascript ES6
-// no se ocupan funciones constructoras
-// ahora ocupamos la palabra reservada class y un metodo constructor
+function resta1(a, b) {
+    return a - b;
+}
 
-// creacion de una clase
-
-class Humano {
-    constructor(altura, peso){
-        // se ejecuta primero
-        // inicializar propiedades
-        this.altura= altura;
-        this.peso=peso;
-    }
-
-    // metodos de la clase
-    caminar() {}
-    hablar() {}
-    comer() {
-        this.peso = this.peso + 1;
+function operacionUsuario(num1, num2, operacion1, operacion2) {
+    if (num1 < num2) { 
+       return operacion1;
+    } else {
+        return operacion2;
     }
 }
 
-const humano1 = new Humano('1.70m', '70kg');
-humano1.comer();
-humano1.hablar();
-
-// Ejercicio 3: Refactorizar la clase alumno sin ocupar herencia
+const resultado = operacionUsuario(3, 4, suma1, resta1)(3,4);
 
 
-// Herencia con clases ES6
+// Funciones puras: es una funcion que si recibe el mismo input(parametros) siempre
+// regresara el mismo output(return)
 
-class Persona extends Humano {
-    constructor(altura, peso, nombre, edad) {
-        super(altura, peso);
-        this.nombre = nombre;
-        this.edad = edad;
-    }
+// ejemplo
+
+function doble(num) {
+    return num * 2;
 }
 
-class Profesor extends Persona {
-    constructor(altura, peso, nombre, edad) {
-        super(altura, peso, nombre, edad);
-    }
+// pruebas de escritorio
+
+doble(8); // 16
+doble(4); // 8
+doble(20); // 40
+doble(8); // 16
+
+function cuentaCaracteres(palabra) {
+    return palabra.length;
 }
 
-const profesor1 = new Profesor('1.72m', '80kg', 'Juan', '30');
+// pruebas de escritorio
+cuentaCaracteres('Pedro'); // 5
+cuentaCaracteres('Maru'); // 4
+cuentaCaracteres('Ornitorrinco'); // 12
+cuentaCaracteres('Maru'); // 4
 
-console.log(profesor1);
+// Funcion impura: Son funciones que pueden no recibir parametros,
+// pueden no regresar nada
+// generan efectos secundarios (mutabilidad)
 
-// Ejercicio 4: Refactorizar la clase alumno con herencia
+// Pilares de la programacion funcional
 
-// Postwork: 
+// filter: regresa una nueva lista de elementos mientras cumplan la 0
+// las condiciones de su funcion se cumplan
 
-// Ejercicio de la agenda telefonica con clases
-// 
+// callback: funcion que se recibe como parametro de otra función
+
+// ejemplo de filter
+
+const numeros = [3, 6, 7, 66, 44, 34, 20, 99];
+
+numeros.filter(
+    (valor) => valor % 2 === 0); // [6, 66, 44, 20];
+
+const alumnos = [];
+
+
+// ejercicio 2: solicitar al usuario 10 nombres
+// regresar los nombres con longitud par
+// o que tengan la cuarta letra del nombre sea vocal
