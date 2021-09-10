@@ -1,0 +1,11 @@
+.visto {
+    color: red;
+    font-size : 20px;
+    font-weight: bold;
+}
+
+.novisto {
+    color: blue;
+    font-size : 10px;
+    font-weight: normal;
+}
